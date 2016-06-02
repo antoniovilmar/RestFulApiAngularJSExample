@@ -1,7 +1,6 @@
 .gradle
 build
 .metadata
-bin
 bin/
 tmp/
 *.tmp
