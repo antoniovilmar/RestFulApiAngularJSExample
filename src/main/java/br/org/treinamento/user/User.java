@@ -1,34 +1,45 @@
 package br.org.treinamento.user;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@XmlRootElement(name = "User")
 public class User {
 
 	private Integer id;
 	private String name;
 	private String lastName;
+	private final String validationMessageName = "Nome é obrigatório";
+
+	public User(@JsonProperty("name") String name, @JsonProperty("lastName") String lastName) {
+		setName(name);
+		this.lastName = lastName;
+	}
 
 	public User(Integer id, String name, String lastName) {
 		this.id = id;
-		this.name = name;
+		setName(name);
 		this.lastName = lastName;
 	}
 
 	public Integer getId() {
 		return id;
 	}
-	
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public String getLastName() {
 		return lastName;
+	}
+
+	private void setName(String name) {
+		if (name == null || name.isEmpty())
+			throw new IllegalArgumentException(validationMessageName);
+		this.name = name;
 	}
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.client.HttpClientErrorException;
 
 @Controller
@@ -45,7 +46,7 @@ public class UserController {
 		return userList;
 	}
 
-	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public User getUser(@PathVariable("id") Integer id) {
 		return userList.stream().filter(u -> u.getId() == id).findFirst()
@@ -53,21 +54,21 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE)
+	@ResponseStatus(value = HttpStatus.OK)
 	public void deleteUser(@PathVariable("id") Integer id) {
 		if (!userList.removeIf(u -> u.getId() == id))
 			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
 	}
 
 	@RequestMapping(value = "/user/", method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.OK)
 	public void createUser(@RequestBody User user) {
-		if (userList.stream().filter(u -> u.getId() == user.getId()).findFirst().orElse(null) == null) {
-			userList.add(user);
-			return;
-		}
-		throw new HttpClientErrorException(HttpStatus.CONFLICT);
+		Integer idMaior = userList.stream().mapToInt(u -> u.getId()).max().orElse(0);
+		userList.add(new User(idMaior + 1, user.getName(), user.getLastName()));
 	}
-	
+
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
+	@ResponseStatus(value = HttpStatus.OK)
 	public void updateUser(@PathVariable("id") Integer id, @RequestBody User user) {
 		deleteUser(id);
 		user.setId(id);
