@@ -7,17 +7,21 @@ public class User {
 	private Integer id;
 	private String name;
 	private String lastName;
+	private String photoUrl;
 	private final String validationMessageName = "Nome é obrigatório";
 
-	public User(@JsonProperty("name") String name, @JsonProperty("lastName") String lastName) {
+	public User(@JsonProperty("name") String name, @JsonProperty("lastName") String lastName,
+			@JsonProperty("photoUrl") String photoUrl) {
 		setName(name);
 		this.lastName = lastName;
+		this.photoUrl = photoUrl;
 	}
 
-	public User(Integer id, String name, String lastName) {
+	public User(Integer id, String name, String lastName, String photoUrl) {
 		this.id = id;
 		setName(name);
 		this.lastName = lastName;
+		this.photoUrl = photoUrl;
 	}
 
 	public Integer getId() {
@@ -34,6 +38,10 @@ public class User {
 
 	public String getLastName() {
 		return lastName;
+	}
+
+	public String getPhotoUrl() {
+		return photoUrl;
 	}
 
 	private void setName(String name) {

@@ -26,22 +26,22 @@ public class UserController {
 	private List<User> userList = new ArrayList<User>();
 
 	public UserController() {
-		userList.add(new User(1, "Danilo", "Fernandes"));
-		userList.add(new User(2, "Wanderson", "Oliveira"));
-		userList.add(new User(3, "Anderson", "Oliveira"));
-		userList.add(new User(4, "Alex", "Meschini"));
-		userList.add(new User(5, "Victor", "Santos"));
-		userList.add(new User(6, "Eduardo", "Sasha"));
-		userList.add(new User(7, "Andrigo", "Araújo"));
-		userList.add(new User(8, "William", "Furtado"));
-		userList.add(new User(9, "Andrigo", "Araújo"));
-		userList.add(new User(10, "Paulo", "Ribeiro"));
-		userList.add(new User(11, "Rodrigo", "Dourado"));
-		userList.add(new User(12, "Fernando", "Silva"));
-		userList.add(new User(13, "Aylon", "Tavella"));
-		userList.add(new User(14, "Gustavo", "Ferrareis"));
-		userList.add(new User(15, "Fabio", "Gonçalves"));
-		userList.add(new User(16, "Alisson", "Becker"));
+		userList.add(new User(1, "Danilo", "Fernandes", "http://zh.rbsdirect.com.br/imagesrc/19218512.jpg?w=640"));
+		userList.add(new User(2, "Wanderson", "Oliveira", "http://torcedores.com/content/uploads/2015/05/foto_20150503182806.jpg"));
+		userList.add(new User(3, "Anderson", "Oliveira", ""));
+		userList.add(new User(4, "Alex", "Meschini", ""));
+		userList.add(new User(5, "Victor", "Santos", ""));
+		userList.add(new User(6, "Eduardo", "Sasha", ""));
+		userList.add(new User(7, "Andrigo", "Araújo", ""));
+		userList.add(new User(8, "William", "Furtado", ""));
+		userList.add(new User(9, "Andrigo", "Araújo", ""));
+		userList.add(new User(10, "Paulo", "Ribeiro", ""));
+		userList.add(new User(11, "Rodrigo", "Dourado", ""));
+		userList.add(new User(12, "Fernando", "Silva", ""));
+		userList.add(new User(13, "Aylon", "Tavella", ""));
+		userList.add(new User(14, "Gustavo", "Ferrareis", ""));
+		userList.add(new User(15, "Fabio", "Gonçalves", ""));
+		userList.add(new User(16, "Alisson", "Becker", ""));
 	}
 
 	@RequestMapping(value = "/user/", method = RequestMethod.GET)
@@ -68,7 +68,7 @@ public class UserController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public void createUser(@RequestBody User user) {
 		Integer idMaior = userList.stream().mapToInt(u -> u.getId()).max().orElse(0);
-		userList.add(new User(idMaior + 1, user.getName(), user.getLastName()));
+		userList.add(new User(idMaior + 1, user.getName(), user.getLastName(), user.getPhotoUrl()));
 	}
 
 	@RequestMapping(value = "/user/{id}", method = RequestMethod.PUT)
