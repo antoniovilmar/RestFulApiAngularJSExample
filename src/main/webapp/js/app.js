@@ -1,5 +1,5 @@
 "use strict";
-var app = angular.module('controleUsuarios', ['minhasDiretivas', 'ngRoute'])
+var app = angular.module('controleUsuarios', ['minhasDiretivas', 'ngRoute', 'meusServicos'])
     .config(function($routeProvider) {
 
 

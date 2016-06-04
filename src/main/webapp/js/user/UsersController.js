@@ -1,20 +1,20 @@
-app.controller('UsersController', function($scope, $http) {
+app.controller('UsersController', function($scope, $http, UserService) {
 
     $scope.users = [];
     $scope.filtro = '';
     $scope.mensagem = '';
 
-    var promise = $http.get('http://localhost:8080/user/');
-    promise.then(function(retorno) {
-            $scope.users = retorno.data;
+    UserService.getAll()
+        .success(function(user) {
+            $scope.users = user;
         })
-        .catch(function(erro) {
-            console.log(erro)
+        .error(function(erro) {
+            $scope.mensagem = 'Não foi possível carregar usuários ';
         });
 
     $scope.remover = function(user) {
 
-        $http.delete('http://localhost:8080/user/' + user.id)
+        UserService.deleteById(user.id)
             .success(function() {
                 var indiceDoUser = $scope.users.indexOf(user);
                 $scope.users.splice(indiceDoUser, 1);
@@ -23,7 +23,7 @@ app.controller('UsersController', function($scope, $http) {
             })
             .error(function(erro) {
                 console.log(erro);
-                $scope.mensagem = 'Não foi possível apagar o Usuário ' + user.name
+                $scope.mensagem = 'Não foi possível apagar o Usuário ' + user.name;
             });
 
     }
