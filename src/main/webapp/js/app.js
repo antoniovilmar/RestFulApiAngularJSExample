@@ -13,5 +13,13 @@ var app = angular.module('controleUsuarios', ['minhasDiretivas', 'ngRoute'])
             controller: 'UserController'
         });
 
-        $routeProvider.otherwise({redirectTo: '/usuarios'});
+        // novidade aqui! Nova rota!
+        $routeProvider.when('/usuario/edit/:userId', {
+            templateUrl: 'partials/usuario.html',
+            controller: 'UserController'
+        });
+
+        $routeProvider.otherwise({
+            redirectTo: '/usuarios'
+        });
     });
