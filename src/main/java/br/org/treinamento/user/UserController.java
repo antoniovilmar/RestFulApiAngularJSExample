@@ -28,8 +28,8 @@ public class UserController {
 	public UserController() {
 		userList.add(new User(1, "Danilo", "Fernandes", "http://zh.rbsdirect.com.br/imagesrc/19218512.jpg?w=640"));
 		userList.add(new User(2, "Wanderson", "Oliveira", "http://torcedores.com/content/uploads/2015/05/foto_20150503182806.jpg"));
-		userList.add(new User(3, "Anderson", "Oliveira", ""));
-		userList.add(new User(4, "Alex", "Meschini", ""));
+		userList.add(new User(3, "Anderson", "Oliveira", "http://www.scinternacional.net/images/news/2015/mar/ricador_duarte_anderson.jpg"));
+		userList.add(new User(4, "Alex", "Meschini", "http://s2.glbimg.com/sIUE5JauF8ICqP07kaThJdmwh1Y=/0x7:1000x587/690x400/s.glbimg.com/es/ge/f/original/2014/09/14/alex2.jpg"));
 		userList.add(new User(5, "Victor", "Santos", ""));
 		userList.add(new User(6, "Eduardo", "Sasha", ""));
 		userList.add(new User(7, "Andrigo", "Araújo", ""));
@@ -41,7 +41,7 @@ public class UserController {
 		userList.add(new User(13, "Aylon", "Tavella", ""));
 		userList.add(new User(14, "Gustavo", "Ferrareis", ""));
 		userList.add(new User(15, "Fabio", "Gonçalves", ""));
-		userList.add(new User(16, "Alisson", "Becker", ""));
+		userList.add(new User(16, "Alisson", "Becker", "https://67.media.tumblr.com/fa820d1675492349907fe5659440b9b0/tumblr_inline_ng2di7lXFB1rh2z4r.png"));
 	}
 
 	@RequestMapping(value = "/user/", method = RequestMethod.GET)
