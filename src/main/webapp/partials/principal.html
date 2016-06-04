@@ -5,8 +5,14 @@
  <div class="row">
      <div class="col-md-12">
      <form>
-        <label for="txSearchName">Digite o nome para pesquisar:</label>
-          <input id="txSearchName" class="form-control" ng-model="filtro" placeholder="filtrar pelo nome">
+         <div class="input-group">
+             <span class="input-group-btn">
+                 <a href="#/usuario/new" class="btn btn-primary" type="button">
+                     Novo Usuário
+                 </a>
+             </span>
+             <input id="txSearchName" class="form-control" ng-model="filtro" placeholder="filtrar pelo nome">
+        </div
      </form>
      </div> <!-- fim col-md-12 -->
  </div> <!-- fim row -->
