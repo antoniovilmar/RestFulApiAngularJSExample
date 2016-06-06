@@ -1,6 +1,6 @@
-# SpringBootAndSpringMvc
-Example SpringBoot and SpringMvc <br>
-JDK 8 = Install -> http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html <br>
-Gradle = Install -> Gradle plugin for IDE <br>
-Import the project as Gradle <br>
-Up the server -> Run UserController (It has "main")
+Restful 
+JDK 8 
+Spring Boot + Spring MVC 
+Gradle 
+Angular 1.5 
+Bootstrap 
